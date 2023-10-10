@@ -11,10 +11,10 @@ namespace nc
 		velocity *= std::pow(1.0f - damping, dt);
 	}
 
-	void EnginePhysicsComponent::ApplyForce(const vec2& force)
+	/*void EnginePhysicsComponent::ApplyForce(const vec3 force)
 	{
 		velocity += force;
-	}
+	}*/
 
 	void EnginePhysicsComponent::ApplyTorque(float torque)
 	{

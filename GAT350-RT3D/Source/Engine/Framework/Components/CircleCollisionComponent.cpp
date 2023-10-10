@@ -9,13 +9,13 @@ namespace nc
     {
     }
 
-    bool CircleCollisionComponent::CheckCollision(CollisionComponent* collision)
+    /*bool CircleCollisionComponent::CheckCollision(CollisionComponent* collision)
     {
-        float distance = m_owner->transform.position.Distance(collision->m_owner->transform.position);
+        float distance = m_owner->transform.position.distance(collision->m_owner->transform.position);
         float radius = m_radius + collision->m_radius;
 
         return (distance <= radius);
-    }
+    }*/
 
     void CircleCollisionComponent::Read(const json_t& value)
     {
