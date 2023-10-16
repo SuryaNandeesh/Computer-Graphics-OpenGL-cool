@@ -3,6 +3,7 @@
 #include "Math/Color.h"
 #include "Math/Rect.h"
 #include <rapidjson/include/rapidjson/document.h>
+#include <glm/glm/glm.hpp>
 #include <string>
 #include <vector>
 
@@ -24,8 +25,9 @@ namespace nc
 		static bool Read(const rapidjson::Value& value, const std::string& name, float& data, bool required = false);
 		static bool Read(const rapidjson::Value& value, const std::string& name, bool& data, bool required = false);
 		static bool Read(const rapidjson::Value& value, const std::string& name, std::string& data, bool required = false);
-		static bool Read(const rapidjson::Value& value, const std::string& name, vec2& data, bool required = false);
-		static bool Read(const rapidjson::Value& value, const std::string& name, Color& data, bool required = false);
+		static bool Read(const rapidjson::Value& value, const std::string& name, glm::vec2& data, bool required = false);
+		static bool Read(const rapidjson::Value& value, const std::string& name, glm::vec3& data, bool required = false);
+		static bool Read(const rapidjson::Value& value, const std::string& name, glm::vec4& data, bool required = false);
 		static bool Read(const rapidjson::Value& value, const std::string& name, Rect& data, bool required = false);
 		static bool Read(const rapidjson::Value& value, const std::string& name, std::vector<std::string>& data, bool required = false);
 		static bool Read(const rapidjson::Value& value, const std::string& name, std::vector<int>& data, bool required = false);

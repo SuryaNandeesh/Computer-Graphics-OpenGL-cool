@@ -1,1 +1,4 @@
 INFO: Main.cpp(12) Initialize Engine...
+WARNING: Texture.cpp(36) Could not create surface: textures/llama.png
+WARNING: ResourceManager.h(41) Could not create resource: textures/llama.png
+ASSERT: Renderer.cpp(156) OPENGL Source: OpenGL Type: Error(1282) | Error has been generated. GL error GL_INVALID_OPERATION in (null): (ID: 173538523) Generic error

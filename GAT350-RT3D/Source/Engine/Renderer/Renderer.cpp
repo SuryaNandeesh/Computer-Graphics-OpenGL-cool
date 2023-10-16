@@ -1,10 +1,14 @@
 #include "Renderer.h"
 #include "Texture.h"
+#include "glad/include/glad/glad.h"
 #include <SDL2-2.28.4/include/SDL_ttf.h>
 #include <SDL2-2.28.4/include/SDL_image.h>
 
 namespace nc
 {
+	
+
+
 	void APIENTRY DebugCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* param);
 
 	bool Renderer::Initialize()
