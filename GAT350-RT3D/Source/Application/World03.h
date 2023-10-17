@@ -1,6 +1,7 @@
 #pragma once
 #include "Framework/World.h"
 #include "Core/Math/Vector2.h"
+#include "Core/Math/Transform.h"
 #include "Renderer/Renderer.h"
 #include "Input/InputSystem.h"
 #include "Renderer/VertexBuffer.h"
@@ -25,5 +26,6 @@ namespace nc
 		res_t<Texture> m_texture;
 		res_t<Material> m_material;
 		res_t<VertexBuffer> m_vertexBuffer;
+
 	};
 }

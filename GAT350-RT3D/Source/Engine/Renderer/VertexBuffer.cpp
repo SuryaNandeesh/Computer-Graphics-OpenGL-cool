@@ -31,7 +31,7 @@ namespace nc
 		glGenBuffers(1, &m_vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 		// copy data into vertex buffer
-		glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 	}
 
 	void VertexBuffer::CreateIndexBuffer(GLenum indexType, GLsizei count, GLvoid* data)
@@ -60,7 +60,7 @@ namespace nc
 		}
 
 		// copy data into index buffer
-		glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 	}
 		
 	void VertexBuffer::SetAttribute(int attribindex, GLint size, GLsizei stride, GLuint offset)
@@ -70,9 +70,9 @@ namespace nc
 		// bind vertex buffer
 		glBindVertexBuffer(0, m_vbo, 0, stride);
 		// enable vertex attribute (position, color, ...)
-		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(attribindex);
 		// set vertex attribute format
-		glVertexAttribFormat(0, 3, GL_INT, GL_FALSE, 0);
+		glVertexAttribFormat(attribindex, size, GL_FLOAT, GL_FALSE, offset);
 		// bind vertex attribute index to vertex buffer
 		glVertexAttribBinding(attribindex, 0);
 	}
