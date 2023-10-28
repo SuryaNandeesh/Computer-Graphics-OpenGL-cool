@@ -35,7 +35,7 @@ namespace nc
 		m_width = width;
 		m_height = height;
 
-		m_window = SDL_CreateWindow(title.c_str(), 100, 100, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+		m_window = SDL_CreateWindow(title.c_str(), 1280, 720, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 		m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
 
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
@@ -62,10 +62,14 @@ namespace nc
 			GL_FALSE);
 
 		glViewport(0, 0, width, height);
-		glEnable(GL_BLEND);
+		glEnable(GL_BLEND); //disable if looks fucked up
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
+
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_FRONT);
+		glFrontFace(GL_CCW);
 	}
 
 	void Renderer::BeginFrame()

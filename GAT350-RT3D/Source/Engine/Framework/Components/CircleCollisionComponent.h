@@ -9,6 +9,6 @@ namespace nc
 		CLASS_DECLARATION(CircleCollisionComponent)
 
 		virtual void Update(float dt) override;
-		virtual bool CheckCollision(CollisionComponent* collision) override;
+		//virtual bool CheckCollision(CollisionComponent* collision) override;
 	};
 }

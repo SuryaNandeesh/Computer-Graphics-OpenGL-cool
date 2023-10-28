@@ -1,7 +1,8 @@
 #include "Engine.h"
 #include "Renderer/Renderer.h"
 #include "Input/InputSystem.h"
-#include <Renderer/GUI.h>
+#include "Renderer/GUI.h"
+#include <glm/glm/gtx/color_space.hpp>
 
 namespace nc
 {

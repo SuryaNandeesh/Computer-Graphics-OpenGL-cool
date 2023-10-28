@@ -8,6 +8,12 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{e0edd4dc-d354-48e7-b866-5c3400d30936}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Materials">
+      <UniqueIdentifier>{c4998d02-2228-4cd2-9da7-727120e58770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{51031208-51c7-4174-94a6-d8d69c1cc757}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -25,6 +31,9 @@
     <ClCompile Include="World04.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="World05.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="World01.h">
@@ -37,6 +46,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="World04.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="World05.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -73,6 +85,30 @@
     </None>
     <None Include="..\..\Build\Assets\Shaders\lit_texture.frag">
       <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_texture_gouraud.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_texture_gouraud.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\multi_lit_texture.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\multi_lit_texture.prog">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\grid.mtrl">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\quad.mtrl">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\squirrel.mtrl">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Scenes\scene.json">
+      <Filter>Scenes</Filter>
     </None>
   </ItemGroup>
 </Project>
