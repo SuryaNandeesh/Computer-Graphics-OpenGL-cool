@@ -82,6 +82,9 @@ namespace nc
         actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_Q) ? m_speed * +dt : 0;
         actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_E) ? m_speed * -dt : 0;
 
+        actor->transform.rotation.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_Z) ? m_speed * 10 * +dt : 0;
+        actor->transform.rotation.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_X) ? m_speed * 10 * -dt : 0;
+
         m_time += dt;
 
         auto material = actor->GetComponent<ModelComponent>()->m_model->GetMaterial();

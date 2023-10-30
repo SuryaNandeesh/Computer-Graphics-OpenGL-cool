@@ -165,9 +165,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Build\Assets\Materials\grid.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\multi.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\phong.mtrl" />
     <None Include="..\..\Build\Assets\Materials\quad.mtrl" />
     <None Include="..\..\Build\Assets\Materials\squirrel.mtrl" />
     <None Include="..\..\Build\Assets\Scenes\scene.json" />
+    <None Include="..\..\Build\Assets\Shaders\lit_phong.frag" />
+    <None Include="..\..\Build\Assets\Shaders\lit_phong.prog" />
+    <None Include="..\..\Build\Assets\Shaders\lit_phong.vert" />
     <None Include="..\..\Build\Assets\Shaders\lit_texture.frag" />
     <None Include="..\..\Build\Assets\Shaders\lit_texture.prog" />
     <None Include="..\..\Build\Assets\Shaders\lit_texture.vert" />
@@ -187,4 +192,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties _1_1_4_1_1_4Build_4Assets_4Materials_4phong_1mtrl__JsonSchema="https://bitbucket.org/atlassianlabs/intellij-bitbucket-references-plugin/raw/master/src/main/resources/schemas/bitbucket-pipelines.schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
