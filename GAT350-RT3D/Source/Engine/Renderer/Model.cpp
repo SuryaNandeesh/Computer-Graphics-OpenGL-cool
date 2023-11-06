@@ -66,7 +66,7 @@ namespace nc
 		// get model vertex attributes
 		for (size_t i = 0; i < mesh->mNumVertices; i++)
 		{
-			vertex_t vertex;
+			vertex_t vertex{};
 
 			vertex.position = transform * glm::vec4{ mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z, 1 };
 			vertex.normal = transform * glm::vec4{ mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z, 0 };

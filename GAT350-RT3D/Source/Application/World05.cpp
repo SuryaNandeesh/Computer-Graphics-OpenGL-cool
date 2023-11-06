@@ -85,12 +85,29 @@ namespace nc
         actor->transform.rotation.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_Z) ? m_speed * 10 * +dt : 0;
         actor->transform.rotation.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_X) ? m_speed * 10 * -dt : 0;
 
-        m_time += dt;
 
         auto material = actor->GetComponent<ModelComponent>()->m_model->GetMaterial();
 
         material->ProcessGui();
         material->Bind();
+
+        material = GET_RESOURCE(Material, "materials/refraction.mtrl");
+        if (material)
+        {
+            ImGui::Begin("Refraction");
+
+            //m_refraction = 1.0 + std::fabs(std::sin(m_time * 0.01f));
+
+            ImGui::DragFloat("IOR", &m_refraction, 0.01f, 1, 3);
+            auto program = material->GetProgram();
+            program->Use();
+            program->SetUniform("ior", m_refraction); //setUniform is case sensitive
+
+            ImGui::End();
+        }
+
+
+        m_time += dt;
 
         ENGINE.GetSystem<Gui>()->EndFrame();
     }

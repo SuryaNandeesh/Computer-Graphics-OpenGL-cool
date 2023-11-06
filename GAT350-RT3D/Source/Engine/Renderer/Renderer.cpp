@@ -62,13 +62,14 @@ namespace nc
 			GL_FALSE);
 
 		glViewport(0, 0, width, height);
-		glEnable(GL_BLEND); //disable if looks fucked up
+		//glEnable(GL_BLEND); //disable if looks fucked up
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 
 		glEnable(GL_CULL_FACE);
-		glCullFace(GL_FRONT);
+		glCullFace(GL_BACK);
 		glFrontFace(GL_CCW);
 	}
 

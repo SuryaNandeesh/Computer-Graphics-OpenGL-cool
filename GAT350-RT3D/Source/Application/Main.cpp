@@ -1,11 +1,12 @@
-#include "World01.h"
-#include "World02.h"
-#include "World03.h"
-#include "World04.h"
+//#include "World01.h"
+//#include "World02.h"
+//#include "World03.h"
+//#include "World04.h"
 #include "World05.h"
 #include "Core/Core.h"
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
+#include <iostream>
 
 using namespace std;
 
@@ -34,6 +35,8 @@ int main(int argc, char* argv[])
 
 		// draw
 		world->Draw(*ENGINE.GetSystem<nc::Renderer>());
+
+		std::string input = "Hello, World";
 	}
 
 	world->Shutdown();

@@ -70,10 +70,7 @@ namespace nc
 		{
 			if (actor->active) actor->Draw(renderer);
 		}
-		for (auto& actor : m_actors)
-		{
-			if (actor->active) actor->Draw(renderer);
-		}
+		
 	}
 
 	void Scene::Add(std::unique_ptr<Actor> actor)

@@ -7,7 +7,7 @@
 #define ALBEDO_TEXTURE_MASK		 (1 << 0) //0001
 #define SPECULAR_TEXTURE_MASK	 (1 << 1) //0010
 #define NORMAL_TEXTURE_MASK		 (1 << 2) //0100
-#define EMMISIVE_TEXTURE_MASK	 (1 << 3) //1000
+#define EMISSIVE_TEXTURE_MASK	 (1 << 3) //1000
 
 in layout(location = 0) vec3 fposition;
 in layout(location = 1) vec3 fnormal;
@@ -21,7 +21,7 @@ uniform struct Material
 	//vec3 diffuse;
 	vec3 albedo;
 	vec3 specular;
-	vec3 emmisive;
+	vec3 emissive;
 	float shininess;
 
 	vec2 offset;
@@ -46,7 +46,7 @@ uniform int numLights = 3;
 layout(binding = 0) uniform sampler2D albedoTexture;
 layout(binding = 1) uniform sampler2D specularTexture;
 layout(binding = 2) uniform sampler2D normalTexture;
-layout(binding = 3) uniform sampler2D emmisiveTexture;
+layout(binding = 3) uniform sampler2D emissiveTexture;
 
 float attenuation(in vec3 position1, in vec3 position2, in float range)
 {
@@ -88,10 +88,11 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 void main()
 {
 	vec4 albedoColor = bool(material.params & ALBEDO_TEXTURE_MASK) ? texture(albedoTexture, ftexcoord) : vec4(material.albedo, 1);
-	vec4 specularColor = texture(specularTexture, ftexcoord); //vec4(material.specular, 1);
-	vec4 emmisiveColor = texture(emmisiveTexture, ftexcoord); //(material.emmisive, 1);
-	// set ambient light + emmisive color
-	ocolor = vec4(ambientLight, 1) * albedoColor + emmisiveColor;
+	vec4 specularColor = bool(material.params & SPECULAR_TEXTURE_MASK) ? texture(specularTexture, ftexcoord) : vec4(material.specular, 1);
+	vec4 emissiveColor = bool(material.params & EMISSIVE_TEXTURE_MASK) ? texture(emissiveTexture, ftexcoord) : vec4(material.emissive, 1);
+
+	// set ambient light + emissive color
+	ocolor = vec4(ambientLight, 1) * albedoColor + emissiveColor;
 
 	// set lights
 	for (int i = 0; i < numLights; i++)

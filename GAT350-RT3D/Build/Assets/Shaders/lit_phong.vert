@@ -14,10 +14,11 @@ uniform mat4 projection;
 
 uniform struct Material
 {
+	uint params;
 	//vec3 diffuse;
 	vec3 albedo;
 	vec3 specular;
-	vec3 emmisive;
+	vec3 emissive;
 	float shininess;
 
 	vec2 offset;
