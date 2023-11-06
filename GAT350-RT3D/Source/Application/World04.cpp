@@ -10,11 +10,10 @@ namespace nc
 {
     bool World04::Initialize()
     {
-        auto material = GET_RESOURCE(Material, "materials/grid.mtrl");
+        m_material = GET_RESOURCE(Material, "materials/grid.mtrl");
         m_model = std::make_shared<Model>();
-        m_model->SetMaterial(material);
         m_model->Load("models/squirrel.glb", glm::vec3{ 0, -0.7f, 0 }, glm::vec3{ 0 }, glm::vec3{ 0.4f });
-        //m_model->Load("models/buddha.obj", glm::vec3{0}, glm::vec3{90, 0, 0});
+        //model->Load("models/buddha.obj", glm::vec3{0}, glm::vec3{90, 0, 0});
 
         m_light.type = light_t::eType::Point;
         m_light.position = glm::vec3{0, 5, 0};
@@ -73,30 +72,28 @@ namespace nc
 
         m_time += dt;
 
-        auto material = m_model->GetMaterial();
+        m_material->ProcessGui();
+        m_material->Bind();
 
-        material->ProcessGui();
-        material->Bind();
+        m_material->GetProgram()->SetUniform("light.type", m_light.type);
+        m_material->GetProgram()->SetUniform("light.position", m_light.position);
+        m_material->GetProgram()->SetUniform("light.direction", glm::normalize(m_light.direction));
+        m_material->GetProgram()->SetUniform("light.color", m_light.color);
+        m_material->GetProgram()->SetUniform("light.innerAngle", glm::radians(m_light.innerAngle));
+        m_material->GetProgram()->SetUniform("light.outerAngle", glm::radians(m_light.outerAngle));
 
-        material->GetProgram()->SetUniform("light.type", m_light.type);
-        material->GetProgram()->SetUniform("light.position", m_light.position);
-        material->GetProgram()->SetUniform("light.direction", glm::normalize(m_light.direction));
-        material->GetProgram()->SetUniform("light.color", m_light.color);
-        material->GetProgram()->SetUniform("light.innerAngle", glm::radians(m_light.innerAngle));
-        material->GetProgram()->SetUniform("light.outerAngle", glm::radians(m_light.outerAngle));
-
-        material->GetProgram()->SetUniform("ambientLight", m_ambientColor);
+        m_material->GetProgram()->SetUniform("ambientLight", m_ambientColor);
 
         //model matrix
-        material->GetProgram()->SetUniform("model", m_transform.GetMatrix());
+        m_material->GetProgram()->SetUniform("model", m_transform.GetMatrix());
 
         //view matrix
         glm::mat4 view = glm::lookAt(glm::vec3{ 0, 0, 3 }, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0});
-        material->GetProgram()->SetUniform("view", view);
+        m_material->GetProgram()->SetUniform("view", view);
 
         //projection matrix
         glm::mat4 projection = glm::perspective(glm::radians(70.0f), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
-        material->GetProgram()->SetUniform("projection", projection);
+        m_material->GetProgram()->SetUniform("projection", projection);
 
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
@@ -107,8 +104,8 @@ namespace nc
         renderer.BeginFrame();
 
         // renderf
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        m_material->Bind();
         m_model->Draw(GL_TRIANGLES); 
 
         ENGINE.GetSystem<Gui>()->Draw();

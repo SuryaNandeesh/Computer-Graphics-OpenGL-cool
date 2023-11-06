@@ -164,6 +164,10 @@
     <ClInclude Include="World05.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\maple file for references\maple_cubemap.frag" />
+    <None Include="..\..\..\..\maple file for references\maple_skybox.mtrl" />
+    <None Include="..\..\..\..\maple file for references\maple_skybox.prog" />
+    <None Include="..\..\..\..\maple file for references\maple_skybox.vert" />
     <None Include="..\..\Build\Assets\Materials\grid.mtrl" />
     <None Include="..\..\Build\Assets\Materials\multi.mtrl" />
     <None Include="..\..\Build\Assets\Materials\ogre.mtrl" />

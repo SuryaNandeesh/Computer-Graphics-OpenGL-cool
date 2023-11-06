@@ -39,7 +39,7 @@ namespace nc
 	void Model::Draw(GLenum primitive)
 	{
 		//glBindBuffer(GL_BUFFER, primitive);
-		m_material->Bind();
+		//m_material->Bind();
 		//<draw the vertex buffer passing in the primitive>
 		m_vertexBuffer->Draw();
 	}

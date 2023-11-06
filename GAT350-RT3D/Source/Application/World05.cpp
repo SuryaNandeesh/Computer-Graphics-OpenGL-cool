@@ -20,9 +20,9 @@ namespace nc
             actor->name = "actor1";
             actor->transform.position = glm::vec3{ 0, 0, 0 };
             auto modelComponent = CREATE_CLASS(ModelComponent);
-            modelComponent->m_model = std::make_shared<Model>();
-            modelComponent->m_model->SetMaterial(GET_RESOURCE(Material, "materials/squirrel.mtrl"));
-            modelComponent->m_model->Load("models/squirrel.glb", glm::vec3{ 0, -0.7f, 0 }, glm::vec3{ 0 }, glm::vec3{ 0.4f });
+            modelComponent->model = std::make_shared<Model>();
+            modelComponent->model->SetMaterial(GET_RESOURCE(Material, "materials/squirrel.mtrl"));
+            modelComponent->model->Load("models/squirrel.glb", glm::vec3{ 0, -0.7f, 0 }, glm::vec3{ 0 }, glm::vec3{ 0.4f });
             actor->AddComponent(std::move(modelComponent));
             m_scene->Add(std::move(actor));
         }
@@ -53,6 +53,13 @@ namespace nc
             cameraComponent->SetPerspective(70.0f, ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.1f, 100.0f);
             actor->AddComponent(std::move(cameraComponent));
 
+            auto cameraController = CREATE_CLASS(CameraController);
+            cameraController->speed = 5;
+            cameraController->sensitivity = 0.5f;
+            cameraController->m_owner = actor.get();
+            cameraController->Initialize();
+            actor->AddComponent(std::move(cameraController));
+
             m_scene->Add(std::move(actor));
         }
         
@@ -71,40 +78,40 @@ namespace nc
         m_scene->Update(dt);
         m_scene->ProcessGui();
 
-        auto actor = m_scene->GetActorByName<Actor>("actor1");
+        //auto actor = m_scene->GetActorByName<Actor>("actor1");
         
-        actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
-        actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;
+        //actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
+        //actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;
 
-        actor->transform.position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * +dt : 0;
-        actor->transform.position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * -dt : 0;
+        //actor->transform.position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * +dt : 0;
+        //actor->transform.position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * -dt : 0;
 
-        actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_Q) ? m_speed * +dt : 0;
-        actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_E) ? m_speed * -dt : 0;
+        //actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_Q) ? m_speed * +dt : 0;
+        //actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_E) ? m_speed * -dt : 0;
 
-        actor->transform.rotation.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_Z) ? m_speed * 10 * +dt : 0;
-        actor->transform.rotation.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_X) ? m_speed * 10 * -dt : 0;
+        //actor->transform.rotation.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_Z) ? m_speed * 10 * +dt : 0;
+        //actor->transform.rotation.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_X) ? m_speed * 10 * -dt : 0;
 
 
-        auto material = actor->GetComponent<ModelComponent>()->m_model->GetMaterial();
+        //auto material = actor->GetComponent<ModelComponent>()->m_material;
 
-        material->ProcessGui();
-        material->Bind();
+        //material->ProcessGui();
+        //material->Bind();
 
-        material = GET_RESOURCE(Material, "materials/refraction.mtrl");
-        if (material)
-        {
-            ImGui::Begin("Refraction");
+        //material = GET_RESOURCE(Material, "materials/refraction.mtrl");
+        //if (material)
+        //{
+        //    ImGui::Begin("Refraction");
 
-            //m_refraction = 1.0 + std::fabs(std::sin(m_time * 0.01f));
+        //    //m_refraction = 1.0 + std::fabs(std::sin(m_time * 0.01f));
 
-            ImGui::DragFloat("IOR", &m_refraction, 0.01f, 1, 3);
-            auto program = material->GetProgram();
-            program->Use();
-            program->SetUniform("ior", m_refraction); //setUniform is case sensitive
+        //    ImGui::DragFloat("IOR", &m_refraction, 0.01f, 1, 3);
+        //    auto program = material->GetProgram();
+        //    program->Use();
+        //    program->SetUniform("ior", m_refraction); //setUniform is case sensitive
 
-            ImGui::End();
-        }
+        //    ImGui::End();
+        //}
 
 
         m_time += dt;
@@ -120,7 +127,7 @@ namespace nc
         // renderf
         //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         m_scene->Draw(renderer);
-        //m_model->Draw(GL_TRIANGLES); 
+        //model->Draw(GL_TRIANGLES); 
 
         ENGINE.GetSystem<Gui>()->Draw();
 

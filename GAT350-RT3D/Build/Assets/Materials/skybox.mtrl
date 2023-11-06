@@ -1,12 +1,12 @@
 {
   "program": "shaders/skybox.prog",
-  "cubemap": "BerzeliiPark",
+  "cubemap": "night_cubemap",
   "cubemaps": [
-    "textures/BerzeliiPark/posx.jpg",
-    "textures/BerzeliiPark/negx.jpg",
-    "textures/BerzeliiPark/posy.jpg",
-    "textures/BerzeliiPark/negy.jpg",
-    "textures/BerzeliiPark/posz.jpg",
-    "textures/BerzeliiPark/negz.jpg"
+    "textures/night_cubemap/posx.jpg",
+    "textures/night_cubemap/negx.jpg",
+    "textures/night_cubemap/posy.jpg",
+    "textures/night_cubemap/negy.jpg",
+    "textures/night_cubemap/posz.jpg",
+    "textures/night_cubemap/negz.jpg"
   ]
 }

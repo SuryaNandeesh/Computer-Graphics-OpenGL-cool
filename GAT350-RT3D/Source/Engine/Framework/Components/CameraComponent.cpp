@@ -22,7 +22,7 @@ namespace nc
 	void CameraComponent::Update(float dt)
 	{
 		// set view matrix with glm::lookAt function, use owner position
-		view = glm::lookAt(Transform().position, Transform().position + Transform().Forward(), Transform().Up());
+		view = glm::lookAt(m_owner->transform.position, m_owner->transform.position + m_owner->transform.Forward(), m_owner->transform.Up());
 		// set projection matrix with glm::perspective function (fov is in degrees, convert to radians)
 		projection = glm::perspective(DegreesToRadians(fov), aspect, near, far);
 

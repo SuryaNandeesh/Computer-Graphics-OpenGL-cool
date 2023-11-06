@@ -13,12 +13,15 @@ namespace nc
 		void Update(float dt) override;
 		void Draw(class Renderer& renderer) override;
 
-		//virtual float GetRadius() override { return m_model->GetRadius(); }
+		//virtual float GetRadius() override { return Model->GetRadius(); }
 
 	public:
 		std::string modelName;
 		std::string materialName;
-		res_t<Model> m_model;
+
+		res_t<Model>m_model;
+		res_t<Material> m_material;
+
 		bool enableDepth{ true };
 		GLint cullFace{ GL_BACK };
 	};

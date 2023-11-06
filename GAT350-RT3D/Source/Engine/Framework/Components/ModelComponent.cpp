@@ -10,13 +10,11 @@ namespace nc
 	{
 		if (!modelName.empty())
 		{
-			m_model = std::make_shared<Model>();
-			m_model->Load(modelName);
-			//ADD_RESOURCE(modelName, m_model);
+			m_model = GET_RESOURCE(Model, modelName);
 		}
 		if (m_model && !materialName.empty())
 		{
-			m_model->SetMaterial(GET_RESOURCE(Material, materialName));
+			m_material = GET_RESOURCE(Material, materialName);
 		}
 
 		return true;
@@ -28,11 +26,11 @@ namespace nc
 
 	void ModelComponent::Draw(Renderer& renderer)
 	{
-		auto material = m_model->GetMaterial();
-		material->Bind();
-		material->GetProgram()->SetUniform("model", m_owner->transform.GetMatrix());
+		m_material->Bind();
+		m_material->GetProgram()->SetUniform("model", m_owner->transform.GetMatrix());
 		glDepthMask(enableDepth);
 		glCullFace(cullFace);
+
 		m_model->Draw();
 	}
 
@@ -46,7 +44,7 @@ namespace nc
 		if (READ_NAME_DATA(value, "cullface", cullFaceName))
 		{
 			if (StringUtils::IsEqualIgnoreCase(cullFaceName, "front")) cullFace = GL_FRONT;
-			if (StringUtils::IsEqualIgnoreCase(cullFaceName, "back")) cullFace = GL_BACK;
+			//if (StringUtils::IsEqualIgnoreCase(cullFaceName, "back")) cullFace = GL_BACK;
 		}
 		
 	}

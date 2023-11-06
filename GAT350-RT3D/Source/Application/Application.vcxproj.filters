@@ -176,5 +176,17 @@
     <None Include="..\..\Build\Assets\Materials\refraction.mtrl">
       <Filter>Materials</Filter>
     </None>
+    <None Include="..\..\..\..\maple file for references\maple_cubemap.frag">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\..\..\maple file for references\maple_skybox.mtrl">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\..\..\maple file for references\maple_skybox.prog">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\..\..\maple file for references\maple_skybox.vert">
+      <Filter>Scenes</Filter>
+    </None>
   </ItemGroup>
 </Project>

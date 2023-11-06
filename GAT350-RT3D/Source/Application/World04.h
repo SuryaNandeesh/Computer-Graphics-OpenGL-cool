@@ -37,13 +37,12 @@ namespace nc
 		float m_time = 0;
 		float m_speed = 5;
 
-		int m_selected = 0;
 		light_t m_light;
+		int m_selected = 0;
 		glm::vec3 m_ambientColor{ 0.2f };
 
 		Transform m_transform;
 		res_t<Model> m_model;
-		res_t<Model> m_texture;
 		res_t<Material> m_material;
 
 	};

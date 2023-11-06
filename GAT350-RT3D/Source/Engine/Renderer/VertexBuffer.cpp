@@ -80,7 +80,7 @@ namespace nc
 	void VertexBuffer::Draw(GLenum primitiveType)
 	{
 		// bind vertex array object
-		glBindVertexArray(primitiveType);
+		glBindVertexArray(m_vao);
 
 		// if index buffer object was set (!= 0) then draw using index array data, else render primitives from vertex array data
 		if (m_ibo)

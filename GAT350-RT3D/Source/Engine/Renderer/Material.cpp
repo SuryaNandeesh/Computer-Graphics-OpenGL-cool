@@ -101,12 +101,10 @@ namespace nc
 			emissiveTexture->SetActive(GL_TEXTURE3);
 			emissiveTexture->Bind();
 		}
-
-		/*for (size_t i = 0; i < m_textures.size(); i++)
-		{
-			m_textures[i]->SetActive(GL_TEXTURE0 + (int)i);
-			m_textures[i]->Bind();
-		}*/
+		if (cubemapTexture) {
+			cubemapTexture->SetActive(GL_TEXTURE4);
+			cubemapTexture->Bind();
+		}
 	}
 	void Material::ProcessGui()
 	{
