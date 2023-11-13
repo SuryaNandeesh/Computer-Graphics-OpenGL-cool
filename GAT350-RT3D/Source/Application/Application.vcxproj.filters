@@ -43,6 +43,12 @@
     <ClCompile Include="World05.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="World06.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="World07.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="World01.h">
@@ -58,6 +64,12 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="World05.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="World06.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="World07.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -167,18 +179,6 @@
     <None Include="..\..\Build\Assets\Materials\refraction.mtrl">
       <Filter>Materials</Filter>
     </None>
-    <None Include="..\..\..\..\maple file for references\maple_cubemap.frag">
-      <Filter>Scenes</Filter>
-    </None>
-    <None Include="..\..\..\..\maple file for references\maple_skybox.mtrl">
-      <Filter>Scenes</Filter>
-    </None>
-    <None Include="..\..\..\..\maple file for references\maple_skybox.prog">
-      <Filter>Scenes</Filter>
-    </None>
-    <None Include="..\..\..\..\maple file for references\maple_skybox.vert">
-      <Filter>Scenes</Filter>
-    </None>
     <None Include="..\..\Build\Assets\Shaders\unlit_sprite.frag">
       <Filter>Shaders\active shaders</Filter>
     </None>
@@ -207,6 +207,12 @@
       <Filter>Shaders\active shaders</Filter>
     </None>
     <None Include="..\..\Build\Assets\Materials\tree.mtrl">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Scenes\scene_framebuffer.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\framebuffer.mtrl">
       <Filter>Materials</Filter>
     </None>
   </ItemGroup>

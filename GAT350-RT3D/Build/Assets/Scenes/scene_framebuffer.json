@@ -1,0 +1,117 @@
+{
+	"actors": [
+		{
+			"type": "Actor",
+			"name": "skybox",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 0, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/cube.obj",
+					"materialName": "materials/skybox.mtrl",
+					"enableDepth": false,
+					"cullface": "front"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "ogre",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -1, 0, 1 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/ogre.obj",
+					"materialName": "materials/ogre.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "cube",
+			"persistent": true,
+			"active": true,
+			"prototype": true,
+			"transform": {
+				"position": [ -1, 0, 1 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/cube.obj",
+					"materialName": "materials/framebuffer.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "camera1",
+			"persistent": true,
+			"active": true,
+			"prototype": true,
+			"transform": {
+				"position": [ -1, 0, 1 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "CameraComponent",
+					"active": true,
+					"fov": 70,
+					"aspect": 0,
+					"near": 0.1,
+					"far": 100
+				},
+				{
+					"type": "CameraController",
+					"active": true,
+					"speed": 3,
+					"sensitivity": 0.1,
+					"yaw": 0,
+					"pitch": 0
+				},
+				{
+					"type": "RotateComponent",
+					"active": true,
+					"euler": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "light1",
+			"persistent": true,
+			"active": true,
+			"prototype": true,
+			"transform": {
+				"position": [ -1, 0, 1 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "LightComponent",
+					"active": true,
+					"intensity": 1,
+					"range": 20,
+					"innerAngle": 20,
+					"outerAngle": 30
+				}
+			]
+		}
+	]
+}

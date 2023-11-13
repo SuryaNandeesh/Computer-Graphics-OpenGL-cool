@@ -39,14 +39,14 @@ namespace nc
 		glm::vec2 tiling{ 1, 1 };
 		glm::vec2 offset{ 0, 0 };
 
-
-	private:
-		res_t<Program> m_program;
-
 		res_t<Texture> albedoTexture;
 		res_t<Texture> specularTexture;
 		res_t<Texture> normalTexture;
 		res_t<Texture> emissiveTexture;
 		res_t<Texture> cubemapTexture;
+
+	private:
+		res_t<Program> m_program;
+
 	};
 }

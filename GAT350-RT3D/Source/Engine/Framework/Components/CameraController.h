@@ -11,6 +11,8 @@ namespace nc
 		bool Initialize() override;
 		void Update(float dt) override;
 
+		void ProcessGui();
+
 	public:
 		float sensitivity = 0.1f;
 		float speed = 3;
