@@ -11,18 +11,18 @@ namespace nc
     bool World07::Initialize()
     {
         m_scene = std::make_unique<Scene>();
-        m_scene->Load("scenes/scene_framebuffer.json");
+        m_scene->Load("scenes/scene_shadow.json");
         m_scene->Initialize();
 
         auto texture = std::make_shared<Texture>();
-        texture->CreateTexture(512, 512);
-        ADD_RESOURCE("fb_texture", texture);
+        texture->CreateDepthTexture(1024, 1024);
+        ADD_RESOURCE("depth_texture", texture);
 
         auto framebuffer = std::make_shared<Framebuffer>();
-        framebuffer->CreateFramebuffer(texture);
-        ADD_RESOURCE("fb", framebuffer);
+        framebuffer->CreateDepthBuffer(texture);
+        ADD_RESOURCE("depth_buffer", framebuffer);
 
-        auto material = GET_RESOURCE(Material, "materials/framebuffer.mtrl");
+        auto material = GET_RESOURCE(Material, "materials/sprite.mtrl");
         if (material)
         {
             material->albedoTexture = texture;
@@ -62,14 +62,6 @@ namespace nc
 
             m_scene->Add(std::move(actor));
         }
-        //for (int i = 0; i < 1; i++) {
-        //    auto actor = CREATE_CLASS_BASE(Actor, "tree");
-        //    actor->name = StringUtils::CreateUnique("tree");
-        //    actor->transform.position = glm::vec3{ randomf(-10, 10), 0, randomf(-10, 10) };
-        //    actor->transform.scale = glm::vec3{ randomf(1, 10), randomf(1, 10), 0 };
-        //    actor->Initialize();
-        //    m_scene->Add(std::move(actor));
-        //}
         
         return true;
     }
@@ -94,17 +86,33 @@ namespace nc
     void World07::Draw(Renderer& renderer)
     {
         /// *** PASS 1 *** ///
-        //m_scene->GetActorByName("cube")->active = false;
+        m_scene->GetActorByName("cube")->active = false;
 
-        auto framebuffer = GET_RESOURCE(Framebuffer, "fb");
+        auto framebuffer = GET_RESOURCE(Framebuffer, "depth_buffer");
         renderer.SetViewport(framebuffer->GetSize().x, framebuffer->GetSize().y);
         framebuffer->Bind();
 
         // pre-render
-        renderer.BeginFrame({0, 0, 1});
+        renderer.ClearDepth();
+        auto program = GET_RESOURCE(Program, "shaders/shadow_depth.prog");
+        program->Use();
+
+        auto lights = m_scene->GetComponents<LightComponent>();
+        for (auto light : lights) {
+            if (light->castShadow) {
+                glm::mat4 shadowMatrix = light->GetShadowMatrix();
+                program->SetUniform("shadowVP", shadowMatrix);
+            }
+        }
+
+        auto models = m_scene->GetComponents<ModelComponent>();
+        for (auto model : models) {
+            program->SetUniform("model", model->m_owner->transform.GetMatrix());
+            model->m_model->Draw();
+        }
 
         // render
-        m_scene->Draw(renderer);
+        //m_scene->Draw(renderer);
 
         framebuffer->Unbind();
 
