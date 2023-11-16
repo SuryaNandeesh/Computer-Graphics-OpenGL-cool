@@ -15,7 +15,7 @@ namespace nc
 
 		void ProcessGui() override;
 
-		glm::mat4 LightComponent::GetShadowMatrix();
+		glm::mat4 GetShadowMatrix();
 
 	public:
 		enum eType

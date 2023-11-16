@@ -12,6 +12,7 @@ namespace nc
 		bool Initialize() override;
 		void Update(float dt) override;
 		void Draw(class Renderer& renderer) override;
+		void ProcessGui() override;
 
 		//virtual float GetRadius() override { return Model->GetRadius(); }
 
@@ -22,6 +23,7 @@ namespace nc
 		res_t<Model>m_model;
 		res_t<Material> m_material;
 
+		bool castShadow{ true };
 		bool enableDepth{ true };
 		GLint cullFace{ GL_BACK };
 	};

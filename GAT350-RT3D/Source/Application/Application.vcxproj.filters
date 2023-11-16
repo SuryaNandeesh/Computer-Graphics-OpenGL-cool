@@ -230,5 +230,20 @@
     <None Include="..\..\Build\Assets\Shaders\shadow_depth.frag">
       <Filter>Shaders\active shaders</Filter>
     </None>
+    <None Include="..\..\Build\Assets\Scenes\scene_shadow2.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\postprocess.prog">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\postprocess.vert">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\postprocess.frag">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\postprocess.mtrl">
+      <Filter>Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

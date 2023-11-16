@@ -24,6 +24,12 @@ namespace nc
 	{
 	}
 
+	void ModelComponent::ProcessGui()
+	{
+		ImGui::Checkbox("Enable Depth", &enableDepth);
+		ImGui::Checkbox("Cast Shadow", &castShadow);
+	}
+
 	void ModelComponent::Draw(Renderer& renderer)
 	{
 		m_material->Bind();

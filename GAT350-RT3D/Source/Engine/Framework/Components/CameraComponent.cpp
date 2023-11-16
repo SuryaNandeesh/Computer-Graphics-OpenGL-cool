@@ -66,6 +66,7 @@ namespace nc
 	{
 		const char* types[] = { "Perspective", "Orthographic" };
 		ImGui::Combo("Projection", (int*)(&projectionType), types, 2);
+
 		// use ImGui::DragFloat to set fov, aspect, near and far values (use speed of 0.1f)
 		ImGui::DragFloat("FOV", &fov, 0.1f);
 		ImGui::DragFloat("Aspect", &aspect, 0.01f);
@@ -85,5 +86,7 @@ namespace nc
 		READ_NAME_DATA(value, "projectionType", projectionTypeName);
 		if (StringUtils::IsEqualIgnoreCase("orthographic", projectionTypeName)) projectionType = Orthographic;
 		READ_DATA(value, size);
+
+		SetPerspective(fov, aspect, near, far);
 	}
 }

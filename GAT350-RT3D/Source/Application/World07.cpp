@@ -11,7 +11,7 @@ namespace nc
     bool World07::Initialize()
     {
         m_scene = std::make_unique<Scene>();
-        m_scene->Load("scenes/scene_shadow.json");
+        m_scene->Load("scenes/scene_shadow2.json");
         m_scene->Initialize();
 
         auto texture = std::make_shared<Texture>();
@@ -25,7 +25,13 @@ namespace nc
         auto material = GET_RESOURCE(Material, "materials/sprite.mtrl");
         if (material)
         {
-            material->albedoTexture = texture;
+            material->albedoTexture = GET_RESOURCE(Texture, "depth_texture");
+        }
+
+        auto materials = GET_RESOURCES(Material);
+        for (auto material : materials)
+        {
+            material->depthTexture = texture;
         }
         
         {
@@ -86,7 +92,7 @@ namespace nc
     void World07::Draw(Renderer& renderer)
     {
         /// *** PASS 1 *** ///
-        m_scene->GetActorByName("cube")->active = false;
+        m_scene->GetActorByName("ground")->active = true;
 
         auto framebuffer = GET_RESOURCE(Framebuffer, "depth_buffer");
         renderer.SetViewport(framebuffer->GetSize().x, framebuffer->GetSize().y);
@@ -107,8 +113,12 @@ namespace nc
 
         auto models = m_scene->GetComponents<ModelComponent>();
         for (auto model : models) {
-            program->SetUniform("model", model->m_owner->transform.GetMatrix());
-            model->m_model->Draw();
+            if (model->castShadow)
+            {
+                glCullFace(GL_FRONT);
+                program->SetUniform("model", model->m_owner->transform.GetMatrix());
+                model->m_model->Draw();
+            }
         }
 
         // render
@@ -126,5 +136,7 @@ namespace nc
 
         // post-render
         renderer.EndFrame();
+
+
     }
 }
