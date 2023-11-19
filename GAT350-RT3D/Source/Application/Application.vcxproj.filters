@@ -49,6 +49,9 @@
     <ClCompile Include="World07.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="World08.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="World01.h">
@@ -70,6 +73,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="World07.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="World08.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -106,15 +112,6 @@
     </None>
     <None Include="..\..\Build\Assets\Materials\ogre.mtrl">
       <Filter>Materials</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Shaders\lit_phong.frag">
-      <Filter>Shaders\old ass</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Shaders\lit_phong.prog">
-      <Filter>Shaders\old ass</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Shaders\lit_phong.vert">
-      <Filter>Shaders\old ass</Filter>
     </None>
     <None Include="..\..\Build\Assets\Shaders\lit_texture.frag">
       <Filter>Shaders\old ass</Filter>
@@ -179,32 +176,8 @@
     <None Include="..\..\Build\Assets\Materials\refraction.mtrl">
       <Filter>Materials</Filter>
     </None>
-    <None Include="..\..\Build\Assets\Shaders\unlit_sprite.frag">
-      <Filter>Shaders\active shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Shaders\unlit_sprite.prog">
-      <Filter>Shaders\active shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Shaders\unlit_sprite.vert">
-      <Filter>Shaders\active shaders</Filter>
-    </None>
     <None Include="..\..\Build\Assets\Materials\sprite.mtrl">
       <Filter>Materials</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Shaders\lit_phong_normal.frag">
-      <Filter>Shaders\old ass</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Shaders\lit_phong_normal.prog">
-      <Filter>Shaders\old ass</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Shaders\lit_phong_normal.vert">
-      <Filter>Shaders\old ass</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Shaders\unlit_billboard.vert">
-      <Filter>Shaders\active shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Shaders\unlit_billboard.prog">
-      <Filter>Shaders\active shaders</Filter>
     </None>
     <None Include="..\..\Build\Assets\Materials\tree.mtrl">
       <Filter>Materials</Filter>
@@ -244,6 +217,42 @@
     </None>
     <None Include="..\..\Build\Assets\Materials\postprocess.mtrl">
       <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong_normal.frag">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong_normal.prog">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong_normal.vert">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\unlit_billboard.prog">
+      <Filter>Shaders\old ass</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\unlit_billboard.vert">
+      <Filter>Shaders\old ass</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\unlit_sprite.frag">
+      <Filter>Shaders\old ass</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\unlit_sprite.prog">
+      <Filter>Shaders\old ass</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\unlit_sprite.vert">
+      <Filter>Shaders\old ass</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong.prog">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong.frag">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong.vert">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Scenes\scene_cel_shading.json">
+      <Filter>Scenes</Filter>
     </None>
   </ItemGroup>
 </Project>
