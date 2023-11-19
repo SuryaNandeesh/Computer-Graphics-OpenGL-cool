@@ -254,5 +254,20 @@
     <None Include="..\..\Build\Assets\Scenes\scene_cel_shading.json">
       <Filter>Scenes</Filter>
     </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong_cel.prog">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong_cel.frag">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Fantasy\fantasy_cel.mtrl">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\cel.mtrl">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong_cel.vert">
+      <Filter>Shaders\active shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

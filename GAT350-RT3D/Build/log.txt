@@ -9,15 +9,9 @@ INFO: Factory.h(74) Class registered: Actor
 INFO: Main.cpp(18) Initialize Engine...
 INFO: Factory.h(82) Prototype Class registered: camera1
 INFO: Factory.h(82) Prototype Class registered: light1
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].position
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].direction
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].color
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].intensity
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].range
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].innerAngle
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].outerAngle
-WARNING: Program.cpp(165) Could not find uniform location: numLights
+ERROR: Program.cpp(83) Failed to link program: Varying "ftbn" has different type width across different shaders.
+
+WARNING: ResourceManager.h(65) Could not create resource: shaders/lit_phong_cel.prog
 WARNING: Program.cpp(165) Could not find uniform location: view
 WARNING: Program.cpp(165) Could not find uniform location: projection
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
@@ -40,10 +34,3 @@ WARNING: Program.cpp(165) Could not find uniform location: lights[0].innerAngle
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].outerAngle
 WARNING: Program.cpp(165) Could not find uniform location: numLights
 WARNING: Program.cpp(165) Could not find uniform location: ambientLight
-WARNING: Program.cpp(165) Could not find uniform location: material.params
-WARNING: Program.cpp(165) Could not find uniform location: material.albedo
-WARNING: Program.cpp(165) Could not find uniform location: material.emissive
-WARNING: Program.cpp(165) Could not find uniform location: material.params
-WARNING: Program.cpp(165) Could not find uniform location: material.specular
-WARNING: Program.cpp(165) Could not find uniform location: material.emissive
-WARNING: Program.cpp(165) Could not find uniform location: material.shininess

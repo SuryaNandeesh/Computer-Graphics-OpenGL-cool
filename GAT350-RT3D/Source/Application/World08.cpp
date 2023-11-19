@@ -11,7 +11,7 @@ namespace nc
     bool World08::Initialize()
     {
         m_scene = std::make_unique<Scene>();
-        m_scene->Load("scenes/scene_shadow.json");
+        m_scene->Load("scenes/scene_cel_shading.json");
         m_scene->Initialize();
 
         auto texture = std::make_shared<Texture>();
