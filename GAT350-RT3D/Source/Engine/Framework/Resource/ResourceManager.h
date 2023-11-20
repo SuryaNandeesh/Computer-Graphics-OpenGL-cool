@@ -2,6 +2,7 @@
 #include "Resource.h"
 #include "Core/Logger.h"
 #include "Framework/Singleton.h"
+#include "Core/StringUtils.h"
 #include <map>
 #include <memory>
 #include <string>
@@ -35,14 +36,16 @@ namespace nc
 	template<typename T>
 	inline bool ResourceManager::Add(const std::string& name, res_t<T> resource)
 	{
+		std::string lname = StringUtils::ToLower(name);
+
 		if (m_resources.find(name) != m_resources.end())
 		{
 
 			WARNING_LOG("Resource found already: " << name);
 			return false;
 		}
-
-		m_resources[name] = resource;
+		resource->name = lname;
+		m_resources[lname] = resource;
 
 		return true;
 	}

@@ -11,14 +11,16 @@
 
 in layout(location = 0) vec3 fposition;
 in layout(location = 1) vec2 ftexcoord;
-in layout(location = 2) mat3 ftbn;
-in layout(location = 5) vec4 fshadowcoord;
+in layout(location = 2) vec3 fnormal;
+in layout(location = 3) vec3 fviewdir;
+in layout(location = 4) vec4 fshadowcoord;
 
 out layout(location = 0) vec4 ocolor;
 
 uniform struct Material
 {
 	uint params;
+	//vec3 diffuse;
 	vec3 albedo;
 	vec3 specular;
 	vec3 emissive;
@@ -42,19 +44,15 @@ uniform struct Light
 
 uniform vec3 ambientLight;
 uniform int numLights = 3;
-uniform float shadowBias = 0.005;
 
 uniform int celLevels = 5;
 uniform float celSpecularCutoff = 0.3;
 const float celScaleFactor = 1.0 / celLevels;
 
-uniform float celOutline = 0.3;
-
 layout(binding = 0) uniform sampler2D albedoTexture;
 layout(binding = 1) uniform sampler2D specularTexture;
 layout(binding = 2) uniform sampler2D normalTexture;
 layout(binding = 3) uniform sampler2D emissiveTexture;
-layout(binding = 5) uniform sampler2D shadowTexture;
 
 float attenuation(in vec3 position1, in vec3 position2, in float range)
 {
@@ -79,10 +77,10 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 	}
 
 	float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
-	//cel shader addition
+	//diffuse = (light.color * intensity);
 	float cellIntensity = floor(intensity * celLevels) * celScaleFactor;
 	diffuse = (light.color * cellIntensity);
-	//diffuse = (light.color * intensity);
+
 
 	// SPECULAR
 	specular = vec3(0);
@@ -97,22 +95,14 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 		//binn-phong
 		vec3 h =normalize(viewDir + lightDir);
 		intensity = max(dot(h, normal), 0);
-
 		intensity = pow(intensity, material.shininess);
+		//specular = vec3(intensity * spotIntensity);
+
 		//cel shader addin
 		intensity = (intensity < celSpecularCutoff) ? 0 : 1;
 		specular = vec3(intensity * spotIntensity);
 
-		specular = vec3(intensity * spotIntensity);
-
-		//cel shader
-		floor(intensity * celLevels) * celScaleFactor;
 	}
-}
-
-float calculateShadow(vec4 shadowcoord, float bias)
-{
-	return texture(shadowTexture, shadowcoord.xy).x < shadowcoord.z - shadowBias ? 0 : 1;
 }
 
 void main()
@@ -124,9 +114,6 @@ void main()
 	// set ambient light + emissive color
 	ocolor = vec4(ambientLight, 1) * albedoColor + emissiveColor;
 
-	//set shadow
-	float shadow = calculateShadow(fshadowcoord, shadowBias);
-
 	// set lights
 	for (int i = 0; i < numLights; i++)
 	{
@@ -135,22 +122,9 @@ void main()
 
 		float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].position, fposition, lights[i].range);
 
-		vec3 normal = texture(normalTexture, ftexcoord).rgb;
-		normal = (normal *2) -1;
-		normal = normalize(ftbn * normal);
-
-		phong(lights[i], fposition, normal, diffuse, specular);
-		ocolor += ((vec4(diffuse, 1) * albedoColor) + (vec4(specular, 1)) * specularColor) * lights[i].intensity * attenuation * shadow;
-
-		// outline
-		// check cosine between surface normal and view direction
-		//if less than cel outline threshold use outline color
-		//float outline = dot(normal, viewDir);
-		//if (outline < celOutline)
-		//{
-		//	ocolor = vec4(1);
-		//	return; // done rendering this fragment (pixel)
-		//}
-		
+		phong(lights[i], fposition, fnormal, diffuse, specular);
+		ocolor += ((vec4(diffuse, 1) * albedoColor) + (vec4(specular, 1)) * specularColor)* lights[i].intensity * attenuation;
 	}
+
+
 }

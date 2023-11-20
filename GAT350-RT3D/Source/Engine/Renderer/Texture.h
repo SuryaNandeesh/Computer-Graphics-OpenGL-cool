@@ -18,6 +18,7 @@ namespace nc
 		bool CreateDepthTexture(int width, int height);
 
 		bool Load(const std::string& filename, class Renderer& renderer);
+		void ProcessGui();
 		const glm::ivec2& GetSize() const { return m_size;  }
 
 		void SetActive(GLuint unit) { glActiveTexture(unit); }
