@@ -11,7 +11,7 @@ namespace nc
     bool World09::Initialize()
     {
         m_scene = std::make_unique<Scene>();
-        m_scene->Load("scenes/scene_cel_shading.json");
+        m_scene->Load("scenes/scene_final.json");
         m_scene->Initialize();
 
         m_editor = std::make_unique<Editor>();

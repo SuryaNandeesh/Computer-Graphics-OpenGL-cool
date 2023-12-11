@@ -1,0 +1,216 @@
+{
+	"actors": [
+		{
+			"type": "Actor",
+			"name": "actor1",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 30, 0, -30 ],
+				"scale": [ 0.5, 0.5, 0.5 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Elven_House_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"Rotation": [ 0, 30, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "house2",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 50, 0, -60 ],
+				"scale": [ 0.5, 0.5, 0.5 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Elven_House_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"Rotation": [ 0, 30, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "house3",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 40, 0, -20 ],
+				"scale": [ 0.5, 0.5, 0.5 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Elven_House_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"Rotation": [ 0, 30, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "actor1",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 30, 0, -30 ],
+				"scale": [ 0.5, 0.5, 0.5 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Elven_House_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"Rotation": [ 0, 30, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "cube",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 15, 10, -10 ],
+				"scale": [ 0.5, 0.5, 0.5 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/cube.obj",
+					"materialName": "materials/grid.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"Rotation": [ 0, 30, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "ground",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 10, 0, -10 ],
+				"scale": [ 5, 5, 5 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"Rotation": [ 0, 30, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "depth debug",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 2.4, 1.4, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/sprite.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"Rotation": [ 0, 30, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "camera1",
+			"persistent": true,
+			"active": true,
+			"prototype": true,
+			"transform": {
+				"position": [ -1, 0, 1 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "CameraComponent",
+					"active": true,
+					"fov": 70,
+					"aspect": 0,
+					"near": 0.1,
+					"far": 100
+				},
+				{
+					"type": "CameraController",
+					"active": true,
+					"speed": 3,
+					"sensitivity": 0.1,
+					"yaw": 0,
+					"pitch": 0
+				},
+				{
+					"type": "RotateComponent",
+					"active": true,
+					"euler": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "light1",
+			"persistent": true,
+			"active": true,
+			"prototype": true,
+			"transform": {
+				"position": [ 0, 3, 0 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "LightComponent",
+					"lightType": "directional",
+					"color": [ 1, 1, 1 ],
+					"intensity": 1,
+					"range": 20,
+					"innerAngle": 20,
+					"outerAngle": 30,
+					"castShadow": true
+				}
+			]
+		}
+	]
+}
