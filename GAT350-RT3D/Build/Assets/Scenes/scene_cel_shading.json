@@ -14,7 +14,8 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "models/sphere.obj",
-					"materialName": "materials/cel.mtrl"
+					"materialName": "materials/cel.mtrl",
+					"castShadow": true
 				},
 				{
 					"type": "RotateComponent",
@@ -35,8 +36,9 @@
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
-					"materialName": "fantasy/fantasy.mtrl"
+					"modelName": "models/cube.obj",
+					"materialName": "fantasy/fantasy.mtrl",
+					"castShadow": true
 				},
 				{
 					"type": "RotateComponent",

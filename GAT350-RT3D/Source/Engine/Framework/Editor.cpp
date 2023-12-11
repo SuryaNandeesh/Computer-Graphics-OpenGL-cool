@@ -6,16 +6,45 @@ namespace nc
 	void Editor::ProcessGui(Scene* scene)
 	{
 		// show resources
-
 		ImGui::Begin("Resources");
-		GET_RESOURCES(Resource);
-		auto resources = GET_RESOURCES(Resource);
-		for (auto resource : resources)
+		// models
+		if (ImGui::CollapsingHeader("Textures"))
 		{
-			if (ImGui::Selectable(resource->name.c_str(), resource.get() == m_selected)) {
-				m_selected = resource.get();
+
+			auto resources = GET_RESOURCES(Texture);
+			for (auto& resource : resources)
+			{
+				if (ImGui::Selectable(resource->name.c_str(), resource.get() == m_selected)) m_selected = resource.get();
 			}
 		}
+		//models
+		if (ImGui::CollapsingHeader("Models"))
+		{
+			auto resources = GET_RESOURCES(Model);
+			for (auto& resource : resources)
+			{
+				if (ImGui::Selectable(resource->name.c_str(), resource.get() == m_selected)) m_selected = resource.get();
+			}
+		}
+		//shaders
+		if (ImGui::CollapsingHeader("Shaders"))
+		{
+			auto resources = GET_RESOURCES(Shader);
+			for (auto& resource : resources)
+			{
+				if (ImGui::Selectable(resource->name.c_str(), resource.get() == m_selected)) m_selected = resource.get();
+			}
+		}
+		//materials
+		if (ImGui::CollapsingHeader("Materials"))
+		{
+			auto resources = GET_RESOURCES(Material);
+			for (auto& resource : resources)
+			{
+				if (ImGui::Selectable(resource->name.c_str(), resource.get() == m_selected)) m_selected = resource.get();
+			}
+		}
+
 		ImGui::End();
 
 

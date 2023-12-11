@@ -1,4 +1,4 @@
-#include "World08.h"
+#include "World09.h"
 #include "Framework/Framework.h"
 #include "Input/InputSystem.h"
 #include <glm/glm/gtc/type_ptr.hpp>
@@ -8,7 +8,7 @@
 
 namespace nc
 {
-    bool World08::Initialize()
+    bool World09::Initialize()
     {
         m_scene = std::make_unique<Scene>();
         m_scene->Load("scenes/scene_cel_shading.json");
@@ -74,12 +74,12 @@ namespace nc
         return true;
     }
     
-    void World08::Shutdown()
+    void World09::Shutdown()
     {
         //
     }
 
-    void World08::Update(float dt)
+    void World09::Update(float dt)
     {
         m_time += dt;
 
@@ -98,7 +98,7 @@ namespace nc
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
 
-    void World08::Draw(Renderer& renderer)
+    void World09::Draw(Renderer& renderer)
     {
         /// *** PASS 1 *** ///
         m_scene->GetActorByName("ground")->active = true;

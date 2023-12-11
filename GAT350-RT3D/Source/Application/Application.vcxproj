@@ -144,6 +144,7 @@
     <ClCompile Include="World06.cpp" />
     <ClCompile Include="World07.cpp" />
     <ClCompile Include="World08.cpp" />
+    <ClCompile Include="World09.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Core\Core.vcxproj">
@@ -168,6 +169,7 @@
     <ClInclude Include="World06.h" />
     <ClInclude Include="World07.h" />
     <ClInclude Include="World08.h" />
+    <ClInclude Include="World09.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Build\Assets\Fantasy\fantasy.mtrl" />
@@ -239,7 +241,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties _1_1_4_1_1_4Build_4Assets_4Materials_4phong_1mtrl__JsonSchema="https://bitbucket.org/atlassianlabs/intellij-bitbucket-references-plugin/raw/master/src/main/resources/schemas/bitbucket-pipelines.schema.json" />
+      <UserProperties />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

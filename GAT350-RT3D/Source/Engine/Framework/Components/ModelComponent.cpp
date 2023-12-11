@@ -44,6 +44,7 @@ namespace nc
 	{
 		READ_DATA(value, modelName);
 		READ_DATA(value, materialName);
+		READ_DATA(value, castShadow);
 
 		READ_DATA(value, enableDepth);
 		std::string cullFaceName;
